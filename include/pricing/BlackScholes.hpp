@@ -2,7 +2,6 @@
 
 class BlackScholes{
 	private:
-		double C;
 		double S;
 		double K;
 		double r;
@@ -25,5 +24,7 @@ class BlackScholes{
 		void loadInterestRate(double r);
 		void loadTime(double T);
 		void loadVolatility(double sigma);
-		double calculateOption();
+		double calculateCallOption();
+		double calculatePutOption();
+		void debug();
 };
