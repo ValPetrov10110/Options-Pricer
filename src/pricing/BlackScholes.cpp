@@ -71,6 +71,26 @@ void BlackScholes::loadVolatility(double sigma){
 	this->sigma = sigma;
 }
 
+double BlackScholes::getStock(){
+	return S;
+}
+
+double BlackScholes::getStrikePrice(){
+	return K;
+}
+
+double BlackScholes::getInterestRate(){
+	return r;
+}
+
+double BlackScholes::getVolatility(){
+	return sigma;
+}
+
+double BlackScholes::getTime(){
+	return T;
+}
+
 double BlackScholes::calculateCallOption(){
 	// Formula: C = SN(d1) - Ke^(-rt)N(d2)
 	recalculate();

@@ -15,6 +15,26 @@ double MonteCarlo::calculateZ(){
 	return dist(rng);
 }
 
+double MonteCarlo::getStock(){
+	return S;
+}
+
+double MonteCarlo::getStrikePrice(){
+	return K;
+}
+
+double MonteCarlo::getInterestRate(){
+	return r;
+}
+
+double MonteCarlo::getVolatility(){
+	return sigma;
+}
+
+double MonteCarlo::getTime(){
+	return T;
+}
+
 double MonteCarlo::calculateCallOption(){
 	double total{};
 	double simulatedPrice{};
