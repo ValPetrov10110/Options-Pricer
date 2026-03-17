@@ -5,7 +5,10 @@
 
 class Analysis{
 private:
+	BlackScholes bs;
+	MonteCarlo mc;
 
+	void validate();
 public:
-	Analysis(BlackScholes bpModel, MonteCarlo mcModel);
+	Analysis(BlackScholes bsModel, MonteCarlo mcModel);
 };
