@@ -21,4 +21,9 @@ class MonteCarlo{
 		double calculateCallOption();
 		double calculatePutOption();
 		double brownianFormula();
+		double getStock();
+		double getStrikePrice();
+		double getInterestRate();
+		double getVolatility();
+		double getTime();
 };

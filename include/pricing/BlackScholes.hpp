@@ -24,6 +24,11 @@ class BlackScholes{
 		void loadInterestRate(double r);
 		void loadTime(double T);
 		void loadVolatility(double sigma);
+		double getStock();
+		double getStrikePrice();
+		double getInterestRate();
+		double getVolatility();
+		double getTime();
 		double calculateCallOption();
 		double calculatePutOption();
 		void debug();
