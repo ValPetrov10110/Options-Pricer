@@ -6,6 +6,7 @@
 Analysis::Analysis(BlackScholes bsModel, MonteCarlo mcModel) : bs(bsModel), mc(mcModel){
 	validate();
 	testRuntime();
+	calculateError();
 }
 
 void Analysis::validate(){
@@ -22,8 +23,8 @@ void Analysis::testRuntime(){
 void Analysis::testBlackScholesRuntime(){
 	auto startTime = std::chrono::steady_clock::now();
 
-	bs.calculateCallOption();
-	bs.calculatePutOption();
+	bsCallResult = bs.calculateCallOption();
+	bsPutResult = bs.calculatePutOption();
 
 	auto endTime = std::chrono::steady_clock::now();
 	auto diff = endTime - startTime;
@@ -34,11 +35,12 @@ void Analysis::testBlackScholesRuntime(){
 void Analysis::testMonteCarloRuntime(){
 	auto startTime = std::chrono::steady_clock::now();
 	
-	mc.calculateCallOption();
-	mc.calculatePutOption();
+	mcCallResult = mc.calculateCallOption();
+	mcPutResult = mc.calculatePutOption();
 
 	auto endTime = std::chrono::steady_clock::now();
 	auto diff = endTime - startTime;
+	
 	
 	mcRuntime = std::chrono::duration<double, std::milli>(diff).count();
 }
@@ -48,6 +50,14 @@ void Analysis::printResults(){
 	std::cout << "MonteCarlo runtime: " << mcRuntime << "ms\n";
 	std::cout << "Difference: " << std::abs(bsRuntime - mcRuntime) << "ms\n";
 	std::cout << "Faster model: " << (bsRuntime < mcRuntime ? "BlackScholes" : "MonteCarlo") << "\n";
+	std::cout << "\n###################################\n";
+	std::cout << "BlackScholes Call Value: $" << bsCallResult << "\n";
+	std::cout << "BlackScholes Put Value: $" << bsPutResult << "\n";
+	std::cout << "MonteCarlo Call Value: $" << mcCallResult << "\n";
+	std::cout << "MonteCarlo Put Value: $" << mcPutResult << "\n";
+	std::cout << "\n###################################\n";
+	std::cout << "MonteCarlo call accuracy: %" << (1 - (callError / bsCallResult)) * 100 << "\n";
+	std::cout << "MonteCarlo put accuracy: %" << (1 - (putError / bsPutResult)) * 100 << "\n";
 }
 
 double Analysis::getBlackScholesRuntime(){
@@ -56,4 +66,9 @@ double Analysis::getBlackScholesRuntime(){
 
 double Analysis::getMonteCarloRuntime(){
 	return mcRuntime;
+}
+
+void Analysis::calculateError(){
+	callError = std::abs(bsCallResult - mcCallResult);
+	putError = std::abs(bsPutResult - mcPutResult);
 }
