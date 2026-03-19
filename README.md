@@ -2,7 +2,7 @@
 A lightweight C++ library for pricing European options using two models -- Black-Scholes and Monte Carlo simulation -- with built-in runtime benchmarking and accuracy analysis. Designed to be integrated into any CMake project as a subdirectory or Git submodule.
 
 ### Features
-- **Black-Scholes** -- CLosed-form analytical pricing for European calls and puts using the standard Black-Scholes formula
+- **Black-Scholes** -- Closed-form analytical pricing for European calls and puts using the standard Black-Scholes formula
 - **Monte Carlo** -- Simulation-based pricing via Geometric Brownian Motion across a configurable number of paths
 - **Analysis** -- Side-by-side comparison of both models including runtime benchmarking and Monte Carlo accuracy relative to Black-Scholes
 - **No external dependencies** -- Uses only the C++17 standard library (`<cmath>`, `<chrono>`, `<random>`)
