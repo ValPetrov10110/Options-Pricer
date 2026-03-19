@@ -7,6 +7,8 @@ A lightweight C++ library for pricing European options using two models -- Black
 - **Analysis** -- Side-by-side comparison of both models including runtime benchmarking and Monte Carlo accuracy relative to Black-Scholes
 - **No external dependencies** -- Uses only the C++17 standard library (`<cmath>`, `<chrono>`, `<random>`)
 
+---
+
 ### Project Structure
 ```
 OptionsPricer/
@@ -26,6 +28,8 @@ OptionsPricer/
 ├── README.md
 └── CMakeLists.txt
 ```
+
+---
 
 ### Integration
 OptionsPricer is intended to be used as a subdirectory or Git submodule inside a parent CMake project
@@ -50,9 +54,13 @@ target_link_libraries(RenameProjectName PRIVATE OptionsPricer)
 #include "core/Analysis.hpp"
 ```
 
+---
+
 ### Requirements
 - C++17 or later
 - CMake 3.15+
+
+---
 
 ### Usage
 **Black-Scholes**
@@ -118,6 +126,8 @@ MonteCarlo call accuracy: %99.97
 MonteCarlo put accuracy:  %99.96
 ```
 
+---
+
 ### Parameters
 |Parameter | Description | 
 | --- | ---|
@@ -127,6 +137,8 @@ MonteCarlo put accuracy:  %99.96
 | `sigma` | Volatility | 
 | `T` | Time to expirt in years (e.g. `1.0` for 1 year) | 
 | `numOfSimulation` | Number of Monte Carlo paths |
+
+---
 
 ### License
 MIT License
